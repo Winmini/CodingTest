@@ -1,3 +1,5 @@
+# https://programmers.co.kr/learn/courses/30/lessons/64061
+
 def solution(board, moves):
     answer = 0
     bucket = []
