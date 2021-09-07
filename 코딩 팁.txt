@@ -1,0 +1,38 @@
+내장함수
+eval("3*4+2") 문자열계산을 진짜로 계산해준다
+
+알면 편한 라이브러리
+from itertools import permutations # 순열
+from itertools import combinations # 조합
+from itertools import product # 중복순열
+from itertools import combinations_with_replacement # 중복조합
+data = ['A', 'B', 'C']
+result = list(permutations(data,3)) # 이런식으로 쓸 수 있다.
+result = list(combinations(data,2)) # 
+
+from collections import Counter
+counter = Counter(['red', 'blue', 'red', 'green' 'blue']) # 세기 짱편함
+
+from collections import deque # 리스트도 가능하지만 시간복잡도 줄임
+queue = deque()
+queue.append(5) # 오른쪽에 추가
+queue.popleft()  # 왼쪽 데이터 빼기
+queue.reverse()  # 역순으로 바꾸기
+
+import math
+
+print(math.gcd(21,14)) # 7 최대공약수
+print(a*b//math.gcd(a,b)) # 최소공배수
+
+리스트 순서뒤집기
+[::-1]
+
+큐 자료구조
+
+
+heapq - 우선순위 큐
+
+collections
+
+math
+
