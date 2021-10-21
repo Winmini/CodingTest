@@ -1,0 +1,94 @@
+import sys
+
+
+test_case = int(input())
+for _ in range(test_case):
+    cube = {'U': ['X', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'],
+            'D': ['X', 'y', 'y', 'y', 'y', 'y', 'y', 'y', 'y', 'y'],
+            'F': ['X', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r'],
+            'B': ['X', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o'],
+            'L': ['X', 'g', 'g', 'g', 'g', 'g', 'g', 'g', 'g', 'g'],
+            'R': ['X', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b', 'b']}
+    N = int(sys.stdin.readline())
+    orders = [i for i in sys.stdin.readline().split()]
+    for order in orders:
+        tmp = 1
+        if order[1] == '+':
+            tmp = 3
+        if order[0] == 'L':
+            for _ in range(tmp):
+                cube['U'][1], cube['U'][4], cube['U'][7], \
+                    cube['F'][1], cube['F'][4], cube['F'][7], \
+                    cube['D'][1], cube['D'][4], cube['D'][7], \
+                    cube['B'][3], cube['B'][6], cube['B'][9] = \
+                    cube['F'][1], cube['F'][4], cube['F'][7], \
+                    cube['D'][1], cube['D'][4], cube['D'][7], \
+                    cube['B'][9], cube['B'][6], cube['B'][3], \
+                    cube['U'][7], cube['U'][4], cube['U'][1]
+
+        if order[0] == 'R':
+            for _ in range(tmp):
+                cube['U'][3], cube['U'][6], cube['U'][9], \
+                    cube['F'][3], cube['F'][6], cube['F'][9], \
+                    cube['D'][3], cube['D'][6], cube['D'][9], \
+                    cube['B'][1], cube['B'][4], cube['B'][7] = \
+                    cube['B'][7], cube['B'][4], cube['B'][1], \
+                    cube['U'][3], cube['U'][6], cube['U'][9], \
+                    cube['F'][3], cube['F'][6], cube['F'][9], \
+                    cube['D'][9], cube['D'][6], cube['D'][3]
+
+        if order[0] == 'U':
+            for _ in range(tmp):
+                cube['F'][1], cube['F'][2], cube['F'][3], \
+                    cube['R'][1], cube['R'][2], cube['R'][3], \
+                    cube['B'][1], cube['B'][2], cube['B'][3], \
+                    cube['L'][1], cube['L'][2], cube['L'][3] = \
+                    cube['L'][1], cube['L'][2], cube['L'][3], \
+                    cube['F'][1], cube['F'][2], cube['F'][3], \
+                    cube['R'][1], cube['R'][2], cube['R'][3], \
+                    cube['B'][1], cube['B'][2], cube['B'][3]
+
+        if order[0] == 'D':
+            for _ in range(tmp):
+                cube['F'][7], cube['F'][8], cube['F'][9], \
+                    cube['L'][7], cube['L'][8], cube['L'][9], \
+                    cube['B'][7], cube['B'][8], cube['B'][9], \
+                    cube['R'][7], cube['R'][8], cube['R'][9] = \
+                    cube['R'][7], cube['R'][8], cube['R'][9], \
+                    cube['F'][7], cube['F'][8], cube['F'][9], \
+                    cube['L'][7], cube['L'][8], cube['L'][9], \
+                    cube['B'][7], cube['B'][8], cube['B'][9]
+
+        if order[0] == 'F':
+            for _ in range(tmp):
+                cube['U'][7], cube['U'][8], cube['U'][9], \
+                    cube['L'][3], cube['L'][6], cube['L'][9], \
+                    cube['D'][1], cube['D'][2], cube['D'][3], \
+                    cube['R'][1], cube['R'][4], cube['R'][7] = \
+                    cube['R'][1], cube['R'][4], cube['R'][7], \
+                    cube['U'][9], cube['U'][8], cube['U'][7], \
+                    cube['L'][3], cube['L'][6], cube['L'][9], \
+                    cube['D'][3], cube['D'][2], cube['D'][1]
+
+        if order[0] == 'B':
+            for _ in range(tmp):
+                cube['U'][1], cube['U'][2], cube['U'][3], \
+                    cube['R'][3], cube['R'][6], cube['R'][9], \
+                    cube['D'][7], cube['D'][8], cube['D'][9], \
+                    cube['L'][1], cube['L'][4], cube['L'][7] = \
+                    cube['L'][7], cube['L'][4], cube['L'][1], \
+                    cube['U'][1], cube['U'][2], cube['U'][3], \
+                    cube['R'][3], cube['R'][6], cube['R'][9], \
+                    cube['D'][7], cube['D'][8], cube['D'][9]
+
+        for _ in range(tmp):
+            cube[order[0]][1], cube[order[0]][2], cube[order[0]][3], \
+                cube[order[0]][4], cube[order[0]][6], cube[order[0]][7], \
+                cube[order[0]][8], cube[order[0]][9] = \
+                cube[order[0]][3], cube[order[0]][6], cube[order[0]][9], \
+                cube[order[0]][2], cube[order[0]][8], cube[order[0]][1], \
+                cube[order[0]][4], cube[order[0]][7]
+
+        for i in range(3):
+            print(''.join(cube['U'][1 + 3*i: 4 + 3*i]))
+        print()
