@@ -1,3 +1,6 @@
+import heapq
+
+
 INF = int(1e9)
 dir_x = [1, 0, -1, 0]
 dir_y = [0, 1, 0, -1]
