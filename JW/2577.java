@@ -4,11 +4,6 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-	private static final StringBuilder sb = new StringBuilder();
-	private static final int[] dir_x = {0, 1, -1, 0};
-	private static final int[] dir_y = {1, 0, 0, -1};
-	private static int[][] board;
-	private static int answer = Integer.MAX_VALUE;
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
